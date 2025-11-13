@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+import 'package:webze_web/widget/custom_text.dart';
+
+class PurchaseButton extends StatefulWidget {
+  const PurchaseButton({super.key});
+
+  @override
+  State<PurchaseButton> createState() => _PurchaseButtonState();
+}
+
+class _PurchaseButtonState extends State<PurchaseButton> {
+  bool isHover = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onEnter: (_) => setState(() => isHover = true),
+      onExit: (_) => setState(() => isHover = false),
+      cursor: SystemMouseCursors.click,
+      child: Align(
+        alignment: Alignment.centerLeft,   // 👈 Start me align
+        child: IntrinsicWidth(             // 👈 Width = text + padding only
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+            decoration: BoxDecoration(
+              color: isHover ? Colors.orange : Colors.transparent,
+              borderRadius: BorderRadius.circular(40),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.3),
+                width: isHover ? 0 : 1.5,
+              ),
+            ),
+            child: CustomText(
+             text:  "PURCHASE NOW",
+                color: isHover ? Colors.black : Colors.white,
+                fontWeight: FontWeight.w800,
+                fontSize: 14,
+                letterSpacing: 1.2,
+
+            ),
+          ),
+        ),
+      ),
+    )
+    ;
+  }
+}
