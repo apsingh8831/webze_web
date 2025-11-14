@@ -37,7 +37,10 @@ class WebzeDrawer extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SvgPicture.asset('asset/image/webze.svg', height: 40),
+                Image.asset(
+                  'asset/image/webze.png',
+                  height: 30,
+                ),
                 IconButton(
                   icon: const Icon(Icons.close, color: Color(0xFFFFB800)),
                   onPressed: () => Navigator.pop(context),

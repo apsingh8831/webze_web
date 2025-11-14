@@ -19,26 +19,24 @@ class _PurchaseButtonState extends State<PurchaseButton> {
       cursor: SystemMouseCursors.click,
       child: Align(
         alignment: Alignment.centerLeft,   // 👈 Start me align
-        child: IntrinsicWidth(             // 👈 Width = text + padding only
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 200),
-            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
-            decoration: BoxDecoration(
-              color: isHover ? Colors.orange : Colors.transparent,
-              borderRadius: BorderRadius.circular(40),
-              border: Border.all(
-                color: Colors.white.withOpacity(0.3),
-                width: isHover ? 0 : 1.5,
-              ),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
+          decoration: BoxDecoration(
+            color: isHover ? Colors.orange : Colors.transparent,
+            borderRadius: BorderRadius.circular(40),
+            border: Border.all(
+              color: Colors.white.withOpacity(0.3),
+              width: isHover ? 0 : 1.5,
             ),
-            child: CustomText(
-             text:  "PURCHASE NOW",
-                color: isHover ? Colors.black : Colors.white,
-                fontWeight: FontWeight.w800,
-                fontSize: 14,
-                letterSpacing: 1.2,
+          ),
+          child: CustomText(
+           text:  "PURCHASE NOW",
+              color: isHover ? Colors.black : Colors.white,
+              fontWeight: FontWeight.w800,
+              fontSize: 12,
+              letterSpacing: 1.2,
 
-            ),
           ),
         ),
       ),
