@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:webze_web/widget/custom_text.dart';
 
 class PurchaseButton extends StatefulWidget {
-  const PurchaseButton({super.key});
+
+  final String text;
+  final AlignmentGeometry alignmentGeometry;
+
+  const PurchaseButton({super.key, required this.text, required this.alignmentGeometry});
 
   @override
   State<PurchaseButton> createState() => _PurchaseButtonState();
@@ -18,7 +22,7 @@ class _PurchaseButtonState extends State<PurchaseButton> {
       onExit: (_) => setState(() => isHover = false),
       cursor: SystemMouseCursors.click,
       child: Align(
-        alignment: Alignment.centerLeft,   // 👈 Start me align
+        alignment: widget.alignmentGeometry,   // 👈 Start me align
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 14),
@@ -31,7 +35,7 @@ class _PurchaseButtonState extends State<PurchaseButton> {
             ),
           ),
           child: CustomText(
-           text:  "PURCHASE NOW",
+           text:  widget.text,
               color: isHover ? Colors.black : Colors.white,
               fontWeight: FontWeight.w800,
               fontSize: 12,

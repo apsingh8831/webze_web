@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:webze_web/widget/built_widget.dart';
 
 import 'custom_text.dart';
 
@@ -36,9 +37,6 @@ class _FooterWidgetState extends State<FooterWidget> with SingleTickerProviderSt
       ),
     );
 
-
-
-
   }
 
   @override
@@ -52,55 +50,54 @@ class _FooterWidgetState extends State<FooterWidget> with SingleTickerProviderSt
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+
+        Align(
+          alignment: AlignmentGeometry.centerRight,
+          child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Transform.translate(
+                offset: Offset(0, _animation.value),
+                child: Image.asset(
+                  'asset/image/g1.png',
+                  height: MediaQuery.sizeOf(context).height * 0.15,
+                ),
+              );
+            },
+          ),
+        ),
+        SizedBox(height: 20,),
         Center(child: Image.asset('asset/image/webze.png')),
 
         SizedBox(height: 30),
-        Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 4,
-            ),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xFFFDB927),
-                width: 0.5,
-              ),
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: CustomText(
-              text: 'BUILT WEB3, POWERED BY YOU',
-              color: Color(0xFFFDB927),
-              fontSize: 12,
-              fontWeight: FontWeight.w800,
-              letterSpacing: 1.2,
-            ),
-          ),
-        ),
+
+        Center(child: BuiltWidget(text: 'BUILT WEB3, POWERED BY YOU')),
 
         SizedBox(height: 20),
-        RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            style: GoogleFonts.nunito(
-              fontSize: 35,
-              fontWeight: FontWeight.w800,
-              height: 1.3,
+        Center(
+          child: RichText(
+            textAlign: TextAlign.center,
+            text: TextSpan(
+              style: GoogleFonts.nunito(
+                fontSize: 35,
+                fontWeight: FontWeight.w800,
+                height: 1.3,
+              ),
+              children: [
+                TextSpan(
+                  text: 'Join with our ',
+                  style: TextStyle(color: Colors.white),
+                ),
+                TextSpan(
+                  text: 'future',
+                  style: TextStyle(color: Colors.white30),
+                ),
+                TextSpan(
+                  text: ' of Webzo currency',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ],
             ),
-            children: [
-              TextSpan(
-                text: 'Join with our ',
-                style: TextStyle(color: Colors.white),
-              ),
-              TextSpan(
-                text: 'future',
-                style: TextStyle(color: Colors.white30),
-              ),
-              TextSpan(
-                text: ' of Webzo currency',
-                style: TextStyle(color: Colors.white),
-              ),
-            ],
           ),
         ),
 
@@ -144,7 +141,7 @@ class _FooterWidgetState extends State<FooterWidget> with SingleTickerProviderSt
         ),
 
 
-        SizedBox(height: 60,),
+        SizedBox(height: 30),
 
         AnimatedBuilder(
           animation: _controller,
@@ -153,7 +150,7 @@ class _FooterWidgetState extends State<FooterWidget> with SingleTickerProviderSt
               offset: Offset(0, _animation.value),
               child: Image.asset(
                 'asset/image/i3.png',
-                height: 90,
+                height: MediaQuery.sizeOf(context).height * 0.15,
               ),
             );
           },
