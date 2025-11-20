@@ -5,8 +5,9 @@ import 'custom_text.dart';
 class BuiltWidget extends StatelessWidget {
 
   final String text;
+  final double? fontSize;
 
-  const BuiltWidget({super.key, required this.text});
+  const BuiltWidget({super.key, this.fontSize,required this.text ,});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class BuiltWidget extends StatelessWidget {
       child: CustomText(
         text: text,
         color: Color(0xFFFDB927),
-        fontSize: 12,
+        fontSize:fontSize ?? 12,
         fontWeight: FontWeight.w800,
         letterSpacing: 1.2,
       ),

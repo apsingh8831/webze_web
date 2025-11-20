@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:webze_web/view/blog/blog_detail.dart';
-import 'package:webze_web/view/blog/blog_screen.dart';
-import 'package:webze_web/view/homepage/homepage.dart';
+import 'package:webze_web/view/blog/mobile_blog_detail.dart';
+import 'package:webze_web/view/blog/mobile_blog_screen.dart';
+import 'package:webze_web/view/homepage/mobile_home.dart';
 import 'package:webze_web/widget/custom_text.dart';
 import '../provider/drawer_provider.dart';
 
@@ -27,7 +27,7 @@ class WebzeDrawer extends StatelessWidget {
 
   /// ⭐ Scroll-to-section if Homepage is already open
   bool _scrollIfHomepageExists(String section) {
-    final homeState = HomepageState.instance; // <-- GLOBAL ACCESS
+    final homeState = MobileHomeState.instance; // <-- GLOBAL ACCESS
 
     if (homeState != null && homeState.mounted) {
       Navigator.of(homeState.context).pop(); // close drawer
@@ -112,31 +112,31 @@ class WebzeDrawer extends StatelessWidget {
 
                       if (item == "HOME") {
                         if (_scrollIfHomepageExists("top")) return;
-                        _navigate(context, const Homepage());
+                        _navigate(context, const MobileHome());
                       }
 
                       else if (item == "FEATURES") {
                         if (_scrollIfHomepageExists("features")) return;
                         _navigate(context,
-                            const Homepage(scrollTo: "features"));
+                            const MobileHome(scrollTo: "features"));
                       }
 
                       else if (item == "TOKEN") {
                         if (_scrollIfHomepageExists("token")) return;
                         _navigate(
-                            context, const Homepage(scrollTo: "token"));
+                            context, const MobileHome(scrollTo: "token"));
                       }
 
                       else if (item == "HOW IT WORKS") {
                         if (_scrollIfHomepageExists("how")) return;
                         _navigate(
-                            context, const Homepage(scrollTo: "how"));
+                            context, const MobileHome(scrollTo: "how"));
                       }
 
                       else if (item == "ROADMAP") {
                         if (_scrollIfHomepageExists("roadmap")) return;
                         _navigate(
-                            context, const Homepage(scrollTo: "roadmap"));
+                            context, const MobileHome(scrollTo: "roadmap"));
                       }
                     },
                   );
@@ -154,10 +154,11 @@ class WebzeDrawer extends StatelessWidget {
                           () {
                         drawer.selectBlogSub(entry.key);
 
-                        if (entry.key == 0)
-                          _navigate(context, BlogScreen());
-                        else
-                          _navigate(context, BlogDetail());
+                        if (entry.key == 0) {
+                          _navigate(context, MobileBlogScreen());
+                        } else {
+                          _navigate(context, MobileBlogDetail());
+                        }
                       },
                     );
                   }),
@@ -227,7 +228,7 @@ class WebzeDrawer extends StatelessWidget {
         children: [
           Expanded(
             child: InkWell(
-              onTap: () => _navigate(context, BlogScreen()),
+              onTap: () => _navigate(context, MobileBlogScreen()),
               child: CustomText(
                 text: 'BLOG',
                 color: drawer.selectedBlogSubIndex != null
@@ -293,9 +294,9 @@ class WebzeDrawer extends StatelessWidget {
 // import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'package:provider/provider.dart';
-// import 'package:webze_web/view/blog/blog_detail.dart';
-// import 'package:webze_web/view/blog/blog_screen.dart';
-// import 'package:webze_web/view/homepage/homepage.dart';
+// import 'package:webze_web/view/blog/mobile_blog_detail.dart';
+// import 'package:webze_web/view/blog/mobile_blog_screen.dart';
+// import 'package:webze_web/view/homepage/mobile_home.dart';
 // import 'package:webze_web/widget/custom_text.dart';
 // import '../provider/drawer_provider.dart';
 //

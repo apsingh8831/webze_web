@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:webze_web/provider/drawer_provider.dart';
 import 'package:webze_web/view/homepage/homepage.dart';
+import 'package:webze_web/view/homepage/mobile_home.dart';
 
 void main() {
   runApp(
